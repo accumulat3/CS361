@@ -31,16 +31,9 @@ public class ConcreteSyntax {
 	// Method that prints a syntax error message
 	private String SyntaxError(String tok) {
 		// System.exit(0);
-		if(new String( token.getType() ).equals("Other")) 
-		{
-			String l = "Lexical error - Expecting: " + tok + " But saw: " + token.getType() + " = " + token.getValue();
-			System.out.println(l);
-			return l;
-		} else { 
-			String s = "Syntax error - Expecting: " + tok + " But saw: "+ token.getType() + " = " + token.getValue();
-			System.out.println(s);
-			return s;
-		}
+		String s = "Syntax error - Expecting: " + tok + " But saw: "+ token.getType() + " = " + token.getValue();
+		System.out.println(s);
+		return s;
 	}
 
 	// Match a string with the value of a token. If no problem, go to the next
@@ -307,7 +300,7 @@ public class ConcreteSyntax {
 			token = input.nextToken();
 			c.elsebranch = statement();
 		}
-		
+
 		return c;
 	}
 
