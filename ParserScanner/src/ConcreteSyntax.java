@@ -9,6 +9,12 @@
 // the code and also make sure it implements a parser for JAY - not something
 // else.
 
+/**
+ * 
+ * @author Jeremy Rivera & Angela Fong
+ *
+ */
+
 public class ConcreteSyntax {
 
 	public Token token; // current token that is considered from the input
@@ -24,10 +30,17 @@ public class ConcreteSyntax {
 
 	// Method that prints a syntax error message
 	private String SyntaxError(String tok) {
-		String s = "Syntax error - Expecting: " + tok + " But saw: " + token.getType() + " = " + token.getValue();
-		System.out.println(s);
-		return s;
 		// System.exit(0);
+		if(new String( token.getType() ).equals("Other")) 
+		{
+			String l = "Lexical error - Expecting: " + tok + " But saw: " + token.getType() + " = " + token.getValue();
+			System.out.println(l);
+			return l;
+		} else { 
+			String s = "Syntax error - Expecting: " + tok + " But saw: "+ token.getType() + " = " + token.getValue();
+			System.out.println(s);
+			return s;
+		}
 	}
 
 	// Match a string with the value of a token. If no problem, go to the next
@@ -43,7 +56,7 @@ public class ConcreteSyntax {
 
 	public Program program() {
 		// Program --> void main ( ) '{' Declarations Statements '}'
-		String[] header = { "main", "(", ")" };
+		String[] header = { "void", "main", "(", ")" };
 		Program p = new Program();
 		for (int i = 0; i < header.length; i++)
 			// bypass "void main ( )"
@@ -192,8 +205,10 @@ public class ConcreteSyntax {
 		Binary b;
 		Expression e;
 		e = addition();
-		while (token.getValue().equals("<") || token.getValue().equals("<=") || token.getValue().equals(">")
-				|| token.getValue().equals(">=") || token.getValue().equals("==") || token.getValue().equals("<>")) {
+		while (token.getValue().equals("<") 
+				|| token.getValue().equals("<=") || token.getValue().equals(">")
+				|| token.getValue().equals(">=") || token.getValue().equals("==") 
+				|| token.getValue().equals("<>")) {
 			b = new Binary();
 			b.term1 = e;
 			b.op = new Operator(token.getValue());
@@ -262,7 +277,7 @@ public class ConcreteSyntax {
 		} else if (token.getType().equals("Literal")) {
 			Value v = null;
 			if (isInteger(token.getValue()))
-				v = new Value((new Integer(token.getValue())).intValue());
+				v = new Value(( new Integer( token.getValue() )).intValue());
 			else if (token.getValue().equals("true"))
 				v = new Value(true);
 			else if (token.getValue().equals("false"))
