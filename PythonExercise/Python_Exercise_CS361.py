@@ -1,0 +1,325 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Python Exercise CS361.ipynb",
+      "version": "0.3.2",
+      "provenance": [],
+      "collapsed_sections": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "metadata": {
+        "id": "j-yFGF7EphSU",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "#Python Exercise -  Jeremy Rivera\n",
+        "#This is the .py file that includes anything I tested or wrote during the completion of this homework\n",
+        "\n",
+        "\n",
+        "#Exercise 4\n",
+        "for i in range(5):\n",
+        "  print(range(i))\n",
+        "  \n",
+        "type(range(5))\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "AWu--cW_zm_k",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 5\n",
+        "numberfound = 0\n",
+        "x = 11\n",
+        "while numberfound < 20:\n",
+        "\tif x % 5 == 0 or x % 7 == 0 or x % 11 == 0:\n",
+        "    print(x)\n",
+        "\tnumberfound += 1\n",
+        "\tx += 1\n",
+        "  "
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "qiurb_Mt0ajO",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 6a\n",
+        "def is_prime(n):\n",
+        "  if n > 1:\n",
+        "    for i in range(2, int(n / 2)):\n",
+        "      if n % i == 0:\n",
+        "        return False\n",
+        "      else: \n",
+        "        return True\n",
+        "  else:\n",
+        "    return \"Valid Parameters are n > 1\"\n",
+        "  \n",
+        "is_prime(23);\n",
+        "\n",
+        "#Exercise 6c\n",
+        "def getPrimesTo(n):\n",
+        "\tl = []\n",
+        "\tfor i in range(n):\n",
+        "\t\tif is_primeFast(n):\n",
+        "\t\t\tl.append(i)\n",
+        "\treturn l\n",
+        "\n",
+        "getPrimesTo(100)\n",
+        "\n",
+        "#Exercise 6b\n",
+        "def is_primeFast(n):\n",
+        "  if n > 1:\n",
+        "    if n == 2 or n == 3:\n",
+        "        return True\n",
+        "    elif (n - 1) % 6 == 0 or (n + 1) % 6 == 0:\n",
+        "        if(is_prime(n)):\n",
+        "            return True\n",
+        "        else:\n",
+        "            return False\n",
+        "    else:\n",
+        "        return False\n",
+        "  else:\n",
+        "      return \"Valid Parameters are n > 1\"\n",
+        "\n",
+        "is_primeFast(23)\n",
+        "\n",
+        "#Exercise 6d\n",
+        "def firstPrimes(n):\n",
+        "result = []\n",
+        "counter = 0\n",
+        "test = 2\n",
+        "while counter < n:\n",
+        "if is_primeFast(test):\n",
+        "result.append(test)\n",
+        "      \t\t\tcounter += 1\n",
+        "\ttest += 1\n",
+        "return result\n",
+        "\n",
+        "print (firstPrimes(5))\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "QkHgS-AS0sik",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 7a\n",
+        "l = [1,2,3,4,599,999]\n",
+        "def printList(n):\n",
+        "\tprint(n[0:len(n)])\n",
+        "printList(l)\n",
+        "\n",
+        "#Exercise 7b\n",
+        "l = [1,2,3,4,599,999]\n",
+        "def printReverseList(n):\n",
+        "\tprint(n[::-1])\n",
+        "printReverseList(l)\n",
+        "\n",
+        "#Exercise 7c\n",
+        "l = [1,2,3,4,599,999]\n",
+        "def lengthList(n):\n",
+        "  count = 0\n",
+        "  if isinstance(n, list):\n",
+        "    for i, value in enumerate(n):\n",
+        "      count += 1\n",
+        "  return count\n",
+        "\n",
+        "print(lengthList(l))\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "1RRhotHA5ETm",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 8a\n",
+        "a = [1,2,3,4,599,999]\n",
+        "\n",
+        "#Exercise 8b\n",
+        "b = a\n",
+        "\n",
+        "#Exercise 8c\n",
+        "b[1] = 5\n",
+        "\n",
+        "#Exercise 8e\n",
+        "c = a[:]\n",
+        "\n",
+        "#Exercise 8f\n",
+        "c[2] = 6\n",
+        "\n",
+        "#Exercise 8-Extra\n",
+        "a = [1,2,3,4,599,999] \n",
+        "def set_first_elem_to_zero(l):\n",
+        "  if len(l) == 0:\n",
+        "    print('list empty')\n",
+        "  else:\n",
+        "    l[0] = 0\n",
+        "  return l\n",
+        "\n",
+        "print(set_first_elem_to_zero(a))\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "nwBHXKjSk53n",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 9\n",
+        "l = [[1,3] , [3,6]]\n",
+        "def printInnerLists(n):\n",
+        "\tfor i in range(len(n)):\n",
+        "\t\tif isinstance(n[i], list):\n",
+        "\t\t\tprintInnerLists(n[i])\n",
+        "\t\telse:\n",
+        "\t\t\tprint(n[i])\n",
+        "printInnerLists(l)\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "4N8GYX9ok_IW",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 10\n",
+        "import matplotlib\n",
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "\n",
+        "# Data for plotting\n",
+        "a = np.arange(0.0, 2.0, 0.01)\n",
+        "b = (np.sin(a - 2) **2) * np.exp(-a **2)\n",
+        "\n",
+        "fig, ax = plt.subplots()\n",
+        "ax.plot(a, b)\n",
+        "\n",
+        "ax.set(xlabel='x', ylabel='y', title='f(x)')\n",
+        "fig.savefig(\"test.png\")\n",
+        "plt.show()\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "Dw5V-5uFlawt",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Excercise 11a\n",
+        "l = [1, 2, 10, 5]\n",
+        "def prodList(n):\n",
+        "  for i in range(1, len(n)):\n",
+        "    n[0] *= n[i]\n",
+        "  return n[0]\n",
+        "\n",
+        "print(prodList(l))\n",
+        "\n",
+        "#Excercise 11b\n",
+        "l = [1, 2, 10, 5]\n",
+        "def prodList(n):\n",
+        "\tif len(n) == 1:\n",
+        "\t\treturn n[0]\n",
+        "\telse:\n",
+        "\t\treturn prodList([n[0]])  * prodList(n[1:])\n",
+        "  "
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "B6kuT3DkuBh0",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 12\n",
+        "def fibonacci(n): \n",
+        "\tif n == 0:\n",
+        "\t\treturn 0\n",
+        "\telif n == 1:\n",
+        "\t\treturn 1\n",
+        "\telif n < 16:\n",
+        "\t\treturn fibonacci(n-1) + fibonacci(n-2)\n",
+        "\telse:\n",
+        "\t\treturn 0\n",
+        "fibonacci(5)\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "V3QvJnwguEL2",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "#Exercise 13\n",
+        "import re\n",
+        "\n",
+        "file = open('emails.txt','r')\n",
+        "file = file.read()\n",
+        "\n",
+        "Emails = re.findall(r'[\\w\\\"\\.-@]*[\\w\\\"\\w.-]+@[\\w\\.-]+\\.[\\w]+', file)\n",
+        "print(Emails)\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
